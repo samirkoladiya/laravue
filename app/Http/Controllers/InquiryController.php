@@ -36,6 +36,6 @@ class InquiryController extends Controller
             }
         }
 
-        return back()->with('success', 'Your message has been sent. Thank you!');
+        return back()->with('success', "Thanks for reaching out! We've received your message and will get back to you soon.");
     }
 }

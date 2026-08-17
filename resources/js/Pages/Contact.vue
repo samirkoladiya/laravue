@@ -51,7 +51,7 @@ const submit = () => {
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Contact</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Have a question or a project in mind? We'd love to hear from you</p>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">

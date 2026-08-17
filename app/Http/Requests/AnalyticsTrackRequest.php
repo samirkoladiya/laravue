@@ -2,30 +2,29 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Concerns\SanitizesText;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class AnalyticsTrackRequest extends FormRequest
 {
+    use SanitizesText;
+
     public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Sanitize input before validation runs.
-     *
-     * Defense-in-depth against stored XSS: HTML tags are stripped from
-     * every free-text field so a `<script>`/`onerror=` payload can never
-     * reach the database, even if a future dashboard view rendered this
-     * data without escaping it. event_data values are stripped
-     * recursively for the same reason.
+     * event_data values are stripped recursively for the same reason as
+     * path/title - defense-in-depth against stored XSS reaching a future
+     * dashboard view.
      */
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'path' => $this->sanitize($this->input('path')),
-            'title' => $this->sanitize($this->input('title')),
+            'path' => $this->sanitizeSingleLine($this->input('path')),
+            'title' => $this->sanitizeSingleLine($this->input('title')),
             'event_data' => $this->filled('event_data') && is_array($this->input('event_data'))
                 ? $this->sanitizeDeep($this->input('event_data'))
                 : null,
@@ -62,15 +61,6 @@ class AnalyticsTrackRequest extends FormRequest
         ];
     }
 
-    private function sanitize(?string $value): ?string
-    {
-        if ($value === null || $value === '') {
-            return null;
-        }
-
-        return trim(str_replace(["\r", "\n"], ' ', strip_tags($value)));
-    }
-
     /**
      * @param  array<string, mixed>  $data
      * @return array<string, mixed>
@@ -79,7 +69,7 @@ class AnalyticsTrackRequest extends FormRequest
     {
         return collect($data)->map(function ($value) {
             if (is_string($value)) {
-                return $this->sanitize($value);
+                return $this->sanitizeSingleLine($value);
             }
 
             if (is_array($value)) {

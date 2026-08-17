@@ -25,13 +25,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        // Keyed on visitor_id first (falls back to IP): more forgiving to
-        // a single real visitor browsing normally - whose page views/
-        // events could plausibly exceed a per-IP limit shared with other
-        // visitors behind the same NAT/office network - while still
-        // capping any single client's flood.
+        // Keyed on IP, not the client-supplied visitor_id: this endpoint is
+        // CSRF-exempt (see routes/web.php), and visitor_id is untrusted
+        // input - keying the limiter on it would let a single caller mint a
+        // fresh id per request and bypass the cap entirely, while each new
+        // id also rows an insert in analytics_visitors/analytics_sessions
+        // (VisitorIdentityService), turning that bypass into unbounded DB
+        // growth. IP is the only part of this request an attacker can't
+        // freely rotate.
         RateLimiter::for('analytics', function (Request $request) {
-            return Limit::perMinute(60)->by($request->input('visitor_id', $request->ip()));
+            return Limit::perMinute(60)->by($request->ip());
         });
     }
 }

@@ -103,8 +103,8 @@ onUnmounted(() => {
                     >
                         <h1>Better Solutions For Your Business</h1>
                         <p>
-                            We are team of talented designers making websites
-                            with Bootstrap
+                            We're a team of designers and developers who build
+                            fast, modern websites that help your business grow
                         </p>
                         <div class="d-flex">
                             <a href="#about" class="btn-get-started"
@@ -156,30 +156,30 @@ onUnmounted(() => {
                         data-aos-delay="100"
                     >
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua.
+                            We're a team of designers, developers, and
+                            strategists dedicated to helping businesses grow
+                            through thoughtful digital solutions.
                         </p>
                         <ul>
                             <li>
                                 <i class="bi bi-check2-circle"></i>
                                 <span
-                                    >Ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.</span
+                                    >Years of hands-on experience across web,
+                                    mobile, and cloud projects.</span
                                 >
                             </li>
                             <li>
                                 <i class="bi bi-check2-circle"></i>
                                 <span
-                                    >Duis aute irure dolor in reprehenderit in
-                                    voluptate velit.</span
+                                    >A collaborative process that keeps you
+                                    informed at every step.</span
                                 >
                             </li>
                             <li>
                                 <i class="bi bi-check2-circle"></i>
                                 <span
-                                    >Ullamco laboris nisi ut aliquip ex ea
-                                    commodo</span
+                                    >A track record of delivering on time and
+                                    within budget.</span
                                 >
                             </li>
                         </ul>
@@ -191,12 +191,13 @@ onUnmounted(() => {
                         data-aos-delay="200"
                     >
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit
-                            anim id est laborum.
+                            From initial strategy through launch and beyond, we
+                            partner closely with every client to understand
+                            their goals and turn them into working products.
+                            Our team combines technical expertise with a
+                            genuine interest in what makes each business
+                            unique, so the solutions we build actually fit the
+                            problem at hand.
                         </p>
                         <a href="#" class="read-more"
                             ><span>Read More</span
@@ -214,8 +215,8 @@ onUnmounted(() => {
             <div class="container section-title" data-aos="fade-up">
                 <h2>Services</h2>
                 <p>
-                    Necessitatibus eius consequatur ex aliquid fuga eum quidem
-                    sint consectetur velit
+                    Everything you need to design, build, and grow your
+                    digital presence
                 </p>
             </div>
             <!-- End Section Title -->
@@ -233,12 +234,12 @@ onUnmounted(() => {
                             </div>
                             <h4>
                                 <a href="" class="stretched-link"
-                                    >Lorem Ipsum</a
+                                    >Web Development</a
                                 >
                             </h4>
                             <p>
-                                Voluptatum deleniti atque corrupti quos dolores
-                                et quas molestias excepturi
+                                Custom, responsive websites and web apps built
+                                for performance and ease of maintenance
                             </p>
                         </div>
                     </div>
@@ -255,12 +256,12 @@ onUnmounted(() => {
                             </div>
                             <h4>
                                 <a href="" class="stretched-link"
-                                    >Sed ut perspici</a
+                                    >UI/UX Design</a
                                 >
                             </h4>
                             <p>
-                                Duis aute irure dolor in reprehenderit in
-                                voluptate velit esse cillum dolore
+                                User-centered interfaces that make your product
+                                intuitive and enjoyable to use
                             </p>
                         </div>
                     </div>
@@ -277,12 +278,12 @@ onUnmounted(() => {
                             </div>
                             <h4>
                                 <a href="" class="stretched-link"
-                                    >Magni Dolores</a
+                                    >Digital Strategy</a
                                 >
                             </h4>
                             <p>
-                                Excepteur sint occaecat cupidatat non proident,
-                                sunt in culpa qui officia
+                                Data-driven planning that aligns your product
+                                roadmap with real business goals
                             </p>
                         </div>
                     </div>
@@ -298,11 +299,13 @@ onUnmounted(() => {
                                 <i class="bi bi-broadcast icon"></i>
                             </div>
                             <h4>
-                                <a href="" class="stretched-link">Nemo Enim</a>
+                                <a href="" class="stretched-link"
+                                    >Ongoing Support</a
+                                >
                             </h4>
                             <p>
-                                At vero eos et accusamus et iusto odio
-                                dignissimos ducimus qui blanditiis
+                                Reliable maintenance and support so your
+                                product keeps running smoothly after launch
                             </p>
                         </div>
                     </div>
@@ -317,10 +320,7 @@ onUnmounted(() => {
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Work Process</h2>
-                <p>
-                    Necessitatibus eius consequatur ex aliquid fuga eum quidem
-                    sint consectetur velit
-                </p>
+                <p>A clear, three-step process from first conversation to launch</p>
             </div>
             <!-- End Section Title -->
 
@@ -344,9 +344,10 @@ onUnmounted(() => {
                                 <div class="steps-number">01</div>
                                 <h3>Research &amp; Analysis</h3>
                                 <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit
-                                    aspernatur aut odit aut fugit, sed quia
-                                    consequuntur magni dolores eos qui ratione.
+                                    We start by understanding your business,
+                                    your users, and your competitors, so every
+                                    decision that follows is grounded in real
+                                    data rather than guesswork.
                                 </p>
                                 <div class="steps-features">
                                     <div class="feature-item">
@@ -385,10 +386,9 @@ onUnmounted(() => {
                                 <div class="steps-number">02</div>
                                 <h3>Design &amp; Planning</h3>
                                 <p>
-                                    Ut enim ad minima veniam, quis nostrum
-                                    exercitationem ullam corporis suscipit
-                                    laboriosam, nisi ut aliquid ex ea commodi
-                                    consequatur.
+                                    From wireframes to polished UI, we map out
+                                    the full product experience and agree on a
+                                    clear plan before any code is written.
                                 </p>
                                 <div class="steps-features">
                                     <div class="feature-item">
@@ -427,10 +427,9 @@ onUnmounted(() => {
                                 <div class="steps-number">03</div>
                                 <h3>Development &amp; Launch</h3>
                                 <p>
-                                    Et harum quidem rerum facilis est et
-                                    expedita distinctio. Nam libero tempore, cum
-                                    soluta nobis est eligendi optio cumque
-                                    nihil.
+                                    Our team builds, tests, and ships your
+                                    product, then stays on hand to support the
+                                    launch and everything that comes after it.
                                 </p>
                                 <div class="steps-features">
                                     <div class="feature-item">
@@ -465,18 +464,16 @@ onUnmounted(() => {
             <div class="container">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     <div class="col-xl-9 text-center text-xl-start">
-                        <h3>Call To Action</h3>
+                        <h3>Ready to start your project?</h3>
                         <p>
-                            Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt
-                            in culpa qui officia deserunt mollit anim id est
-                            laborum.
+                            Tell us what you're trying to build and we'll get
+                            back to you with next steps. No obligation, just a
+                            conversation about what's possible.
                         </p>
                     </div>
                     <div class="col-xl-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="#"
-                            >Call To Action</a
+                        <a class="cta-btn align-middle" href="/contact"
+                            >Get In Touch</a
                         >
                     </div>
                 </div>
@@ -489,10 +486,7 @@ onUnmounted(() => {
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Team</h2>
-                <p>
-                    Necessitatibus eius consequatur ex aliquid fuga eum quidem
-                    sint consectetur velit
-                </p>
+                <p>Meet the people behind our work</p>
             </div>
             <!-- End Section Title -->
 
@@ -574,11 +568,9 @@ onUnmounted(() => {
             <div class="container section-title" data-aos="fade-up">
                 <h2>Frequently Asked Questions</h2>
                 <p>
-                    Magnam dolores commodi suscipit. Necessitatibus eius
-                    consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-                    velit. Quisquam quos quisquam cupiditate. Et nemo qui
-                    impedit suscipit alias ea. Quia fugiat sit in iste officiis
-                    commodi quidem hic quas.
+                    Answers to the questions we hear most often. Can't find
+                    what you're looking for? Get in touch and we'll be happy
+                    to help.
                 </p>
             </div>
             <!-- End Section Title -->

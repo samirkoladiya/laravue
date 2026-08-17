@@ -31,10 +31,6 @@ Route::get('/portfolio', function () {
 
 Route::get('/team', [TeamController::class, 'index']);
 
-Route::get('/pricing', function () {
-    return Inertia::render('Pricing');
-});
-
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 });
@@ -57,7 +53,7 @@ Route::post('/analytics/track', [AnalyticsTrackController::class, 'store'])
 // one away from admin-only pages (to /admin/login) - see
 // redirectGuestsTo()/redirectUsersTo() in bootstrap/app.php. So bouncing
 // bare /admin through /admin/login lands everyone on the right page.
-Route::get('/admin', fn () => redirect()->route('admin.login.index'));
+Route::get('/admin', fn() => redirect()->route('admin.login.index'));
 
 Route::middleware('guest')->group(function () {
     Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.index');

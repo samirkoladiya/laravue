@@ -57,10 +57,13 @@ class ContactInquiryRequest extends FormRequest
     {
         return [
             'name.required' => 'Please enter your name.',
+            'name.max' => 'Your name must not exceed :max characters.',
             'email.required' => 'Please enter your email address.',
             'email.email' => 'Please enter a valid email address.',
+            'email.max' => 'Your email address must not exceed :max characters.',
             'subject.required' => 'Please enter a subject.',
-            'message.max' => 'Message must not exceed :max characters.',
+            'subject.max' => 'Your subject must not exceed :max characters.',
+            'message.max' => 'Your message must not exceed :max characters.',
         ];
     }
 }
