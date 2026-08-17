@@ -2,47 +2,32 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Http\Requests\Concerns\Honeypot;
+use App\Http\Requests\Concerns\SanitizesText;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminTeamRequest extends FormRequest
 {
+    use Honeypot, SanitizesText;
+
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Sanitize input before validation runs.
-     *
-     * Defense-in-depth against stored XSS: HTML tags are stripped from
-     * every text field so a `<script>`/`onerror=` payload can never reach
-     * the database, even if a future view were to render this data
-     * without escaping it.
-     */
     protected function prepareForValidation(): void
     {
         $this->merge([
             'name' => $this->sanitizeSingleLine($this->input('name')),
             'designation' => $this->sanitizeSingleLine($this->input('designation')),
             'email' => $this->sanitizeSingleLine($this->input('email')),
-            'bio' => $this->filled('bio')
-                ? trim(strip_tags((string) $this->input('bio')))
-                : null,
+            'bio' => $this->sanitizeMultiLine($this->input('bio')),
             'facebook_url' => $this->sanitizeSingleLine($this->input('facebook_url')),
             'twitter_url' => $this->sanitizeSingleLine($this->input('twitter_url')),
             'instagram_url' => $this->sanitizeSingleLine($this->input('instagram_url')),
             'linkedin_url' => $this->sanitizeSingleLine($this->input('linkedin_url')),
             'status' => $this->boolean('status'),
         ]);
-    }
-
-    private function sanitizeSingleLine(?string $value): ?string
-    {
-        if ($value === null || $value === '') {
-            return null;
-        }
-
-        return trim(str_replace(["\r", "\n"], ' ', strip_tags($value)));
     }
 
     /**
@@ -70,11 +55,7 @@ class AdminTeamRequest extends FormRequest
                 'mimes:jpeg,jpg,png,webp',
                 'max:2048',
             ],
-            // Honeypot: a hidden field real visitors/admins never fill.
-            // Unconstrained on purpose - it must never fail validation,
-            // or a bot's malformed input would surface a clue that the
-            // field is being checked.
-            'website' => ['nullable'],
+            'website' => ['nullable'], // honeypot, see Concerns\Honeypot
         ];
     }
 
@@ -96,15 +77,5 @@ class AdminTeamRequest extends FormRequest
             'instagram_url.regex' => 'Please enter a valid URL (starting with http:// or https://).',
             'linkedin_url.regex' => 'Please enter a valid URL (starting with http:// or https://).',
         ];
-    }
-
-    /**
-     * Whether this submission tripped the honeypot, i.e. is almost
-     * certainly a bot. The field is invisible to real users, so any
-     * value here means a scripted client filled in every input blindly.
-     */
-    public function isSpam(): bool
-    {
-        return $this->filled('website');
     }
 }

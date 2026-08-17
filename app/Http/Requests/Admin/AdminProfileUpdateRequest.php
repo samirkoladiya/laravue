@@ -2,23 +2,23 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Http\Requests\Concerns\Honeypot;
+use App\Http\Requests\Concerns\SanitizesText;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class AdminProfileUpdateRequest extends FormRequest
 {
+    use Honeypot, SanitizesText;
+
     public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Sanitize input before validation runs.
-     *
-     * Defense-in-depth against stored XSS: HTML tags are stripped so a
-     * `<script>`/`onerror=` payload can never reach the database, even
-     * though this is an authenticated-only form - the name is rendered
-     * back out in the admin header on every page.
+     * The name is rendered back out in the admin header on every page,
+     * so it's sanitized here even though this form is authenticated-only.
      */
     protected function prepareForValidation(): void
     {
@@ -26,15 +26,6 @@ class AdminProfileUpdateRequest extends FormRequest
             'name' => $this->sanitizeSingleLine($this->input('name')),
             'email' => $this->sanitizeSingleLine($this->input('email')),
         ]);
-    }
-
-    private function sanitizeSingleLine(?string $value): ?string
-    {
-        if ($value === null) {
-            return null;
-        }
-
-        return trim(str_replace(["\r", "\n"], ' ', strip_tags($value)));
     }
 
     /**
@@ -49,10 +40,7 @@ class AdminProfileUpdateRequest extends FormRequest
                 Rule::unique('users', 'email')->ignore($this->user()->id),
             ],
             'photo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
-            // Honeypot: a hidden field a real admin never fills. Unconstrained
-            // on purpose - it must never fail validation, or a bot's
-            // malformed input would surface a clue that the field is checked.
-            'website' => ['nullable'],
+            'website' => ['nullable'], // honeypot, see Concerns\Honeypot
         ];
     }
 
@@ -70,10 +58,5 @@ class AdminProfileUpdateRequest extends FormRequest
             'photo.mimes' => 'The photo must be a JPG, PNG or WEBP file.',
             'photo.max' => 'The photo must not be larger than 2MB.',
         ];
-    }
-
-    public function isSpam(): bool
-    {
-        return $this->filled('website');
     }
 }

@@ -2,11 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Http\Requests\Concerns\Honeypot;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
 class AdminPasswordUpdateRequest extends FormRequest
 {
+    use Honeypot;
+
     public function authorize(): bool
     {
         return true;
@@ -22,10 +25,7 @@ class AdminPasswordUpdateRequest extends FormRequest
             // the currently authenticated guard's hashed password.
             'current_password' => ['required', 'current_password'],
             'password' => ['required', 'confirmed', Password::defaults()],
-            // Honeypot: a hidden field a real admin never fills. Unconstrained
-            // on purpose - it must never fail validation, or a bot's
-            // malformed input would surface a clue that the field is checked.
-            'website' => ['nullable'],
+            'website' => ['nullable'], // honeypot, see Concerns\Honeypot
         ];
     }
 
@@ -40,10 +40,5 @@ class AdminPasswordUpdateRequest extends FormRequest
             'password.required' => 'Please enter a new password.',
             'password.confirmed' => 'The password confirmation does not match.',
         ];
-    }
-
-    public function isSpam(): bool
-    {
-        return $this->filled('website');
     }
 }

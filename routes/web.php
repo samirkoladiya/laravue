@@ -52,6 +52,13 @@ Route::post('/analytics/track', [AnalyticsTrackController::class, 'store'])
     ->middleware('throttle:analytics')
     ->name('analytics.track');
 
+// The guest/auth middleware below already redirects an authenticated
+// visitor away from /admin/login (to the dashboard) and an unauthenticated
+// one away from admin-only pages (to /admin/login) - see
+// redirectGuestsTo()/redirectUsersTo() in bootstrap/app.php. So bouncing
+// bare /admin through /admin/login lands everyone on the right page.
+Route::get('/admin', fn () => redirect()->route('admin.login.index'));
+
 Route::middleware('guest')->group(function () {
     Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.index');
     Route::post('/admin/login', [AdminAuthController::class, 'loginPost'])
