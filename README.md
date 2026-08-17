@@ -7,19 +7,21 @@ Bootstrap website and Admin LTE integration using Laravel 13 + Inertia + Vue 3 w
 Step 1 > clone repo from - https://github.com/samirkoladiya/laravue.git
 
 Step 2 > edit .env and change database username and password
-	   > create blank database with name laravue
 
-Step 3 > create virtual host with name - laravue.localhost
-	   > assign public folder path to virtual host
+Step 3 > create blank database with name laravue
+
+Step 4 > create virtual host with name - laravue.localhost
+
+Step 5 > assign public folder path to virtual host
 * Note: I put it to D: drive so my path is D:\htdocs\laravue\public
 
-Step 4 > Run below commands in cmd
+Step 6 > Run below commands in cmd
 - composer install
 - php artisan migrate
 - npm install
 - npm run dev
 
-Step 5 > Open website on browser
+Step 7 > Open website on browser
 Front URL: http://laravue.localhost/
 Admin URL: http://laravue.localhost/admin/login
 
