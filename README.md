@@ -22,7 +22,8 @@ Step 6 > Run below commands in cmd
 - npm run dev
 
 Step 7 > Open website on browser
-Front URL: http://laravue.localhost/
-Admin URL: http://laravue.localhost/admin/login
+- Front URL: http://laravue.localhost/
+- Admin URL: http://laravue.localhost/admin/login
 
 - There will be no admin users in database. So create new one.
+- For development mode OTP is static 1234 to check forgot password.
